@@ -1,6 +1,8 @@
 #PC02 case test script
 #Written by Joseph Gullo
-#---------------------------------------#
+# Github Link: https://github.com/joegullo5/Shell_test_scripts/blob/main/data_structures/test_output.sh
+# Github Raw link: https://raw.githubusercontent.com/joegullo5/Shell_test_scripts/main/data_structures/test_output.sh
+#--------------------------------------------------------------------------------------------------------------------#
 #The basic instructions are:
 #1) wget that link into your PC02 folder
 #2) chmod +x it,
