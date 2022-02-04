@@ -1,8 +1,3 @@
-#PC02 case test script
-#Written by Joseph Gullo
-# Github Link: https://github.com/joegullo5/Shell_test_scripts/blob/main/data_structures/test_output.sh
-# Github Raw link: https://raw.githubusercontent.com/joegullo5/Shell_test_scripts/main/data_structures/test_output.sh
-#--------------------------------------------------------------------------------------------------------------------#
 #The basic instructions are:
 #1) wget that link into your PC02 folder
 #2) chmod +x it,
@@ -56,7 +51,7 @@ fi
 if [ $1 == run ]
 then
     echo "Clearing previous answer files..."
-    #truncate -s 0 test/your_outputs/*.out
+    truncate -s 0 test/your_outputs/*.out
     find test/solutions/ -type f > arguments.txt
     sed -i -e "s/^your_outputs//" -e "s/test\/solutions\///" -e "s/^\///" -e "s/$gen.out$//" -e "s/gen$//" -e "s/_/\n/g" arguments.txt
 
@@ -75,26 +70,4 @@ then
             echo "Differences found between your ${line}_${line1}gen.out and the soluctions"
         fi
     done
-
-    echo "Clearing previous answer files..."
-    #truncate -s 0 test/your_outputs/*.out
-    find test/solutions -type f > arguments.txt
-    sed -i -e "s/^your_outputs//" -e "s/test\/solutions\///" -e "s/^\///" -e "s/$gen.out$//" -e "s/gen$//" -e "s/_/\n/g" arguments.txt
-
-
-    data=$(cat arguments.txt)
-    echo "$data" | while read line; read line1;
-    do
-        echo " "
-        echo "Comparing your $line with the solution for $line1 generations"
-
-        exe/./PC02 "test/inputs/${line}.txt" "$line1" "test/your_outputs/${line}_${line1}gen.out"> /dev/null 2>&1
-
-        if diff -s "test/your_outputs/${line}_${line1}gen.out" "test/solutions/${line}_${line1}gen.out">/dev/null; then
-            echo "Success! Identical to the solution"
-        elif diff -q "test/your_outputs/${line}_${line1}gen.out" "test/solutions/${line}_${line1}gen.out"; then
-            echo "Failure! Differences found between your ${line}_${line1}gen.out and the soluctions"
-        fi
-    done
-    echo "If any Failures are found, your final output can be found in test/your_outputs and the solutions can be found in test/solutions."
 fi
