@@ -1,3 +1,12 @@
+#The basic instructions are:
+#1) wget that link into your PC02 folder
+#2) chmod +x it,
+#3) ./test_output.sh
+#4) Look through the output in the folders it creates. Your programs outputs are in /test/your_outputs and the solutions are in /test/solutions. The program will tell you which files are the same and which are different in the terminal.
+#5) When you're done with the output, you can run it as ./test_output.sh clean and it will remove all files and directories it created.
+
+Note: there was a problem running it if you have tons of text files in your PC02 folder.
+
 #!/bin/bash
 if [ $1 = "clean" ];then
     rm arguments.txt
