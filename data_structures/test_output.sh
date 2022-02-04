@@ -1,3 +1,6 @@
+#PC02 case test script
+#Written by Joseph Gullo
+#---------------------------------------#
 #The basic instructions are:
 #1) wget that link into your PC02 folder
 #2) chmod +x it,
@@ -71,9 +74,6 @@ then
         fi
     done
 
-
-
-
     echo "Clearing previous answer files..."
     #truncate -s 0 test/your_outputs/*.out
     find test/solutions -type f > arguments.txt
@@ -91,7 +91,8 @@ then
         if diff -s "test/your_outputs/${line}_${line1}gen.out" "test/solutions/${line}_${line1}gen.out">/dev/null; then
             echo "Success! Identical to the solution"
         elif diff -q "test/your_outputs/${line}_${line1}gen.out" "test/solutions/${line}_${line1}gen.out"; then
-            echo "Differences found between your ${line}_${line1}gen.out and the soluctions"
+            echo "Failure! Differences found between your ${line}_${line1}gen.out and the soluctions"
         fi
     done
+    echo "If any Failures are found, your final output can be found in test/your_outputs and the solutions can be found in test/solutions."
 fi
